@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Foo::Application.config.secret_key_base = '4c2cfa56a9b90bc90047d3e295dd406fa27a93f5c7fdae5357784faf3596be6f7d9ecd88e230b01ed255036870b0a5a70bf6ad198373de4b74f6ec0a68d2a303'
+RailsFoo::Application.config.secret_key_base = '913586243f03b9e683d64a3da7c1e9ae6890eac248a238bb9ee8e345c8122afbc9230d648fa0d072811b51fa73abfd64329a9f22054a66c618de8301e033414e'
