@@ -1,3 +1,4 @@
+# http://rack.rubyforge.org/doc/Rack/File.html
 require 'rack'
 
 app = Proc.new do |env|
