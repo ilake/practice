@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    render :nothing => true
+    render :text => 'Hello World'
   end
 end
