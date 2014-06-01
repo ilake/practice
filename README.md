@@ -17,7 +17,9 @@ rack utils
 
 =======
 ### rack list
-[http://guides.rubyonrails.org/rails_on_rack.html](http://guides.rubyonrails.org/rails_on_rack.html)
+- [http://guides.rubyonrails.org/rails_on_rack.html](http://guides.rubyonrails.org/rails_on_rack.html)
+- [http://railscasts.com/episodes/151-rack-middleware](http://railscasts.com/episodes/151-rack-middleware)
+- [http://pothibo.com/2013/11/ruby-on-rails-inside-actiondispatch-and-rack/](http://pothibo.com/2013/11/ruby-on-rails-inside-actiondispatch-and-rack/)
 
 - use DummyMiddleware
 - use Rack::Sendfile
