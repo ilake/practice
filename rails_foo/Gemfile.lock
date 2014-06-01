@@ -1,3 +1,8 @@
+PATH
+  remote: ../gem_foo
+  specs:
+    gem_foo (0.0.1.alpha)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -121,6 +126,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   debugger
+  gem_foo!
   jbuilder (~> 1.2)
   jquery-rails
   pg
