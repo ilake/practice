@@ -7,14 +7,22 @@ class DummyMiddleware
   def call(env)
     Rails.logger.info('Request start------')
     start_time = Time.now
-    status, headers, response = @app.call(env)
+    status, headers, response = catch(:restrict) do
+      @app.call(env)
+    end
     end_time = Time.now
 
-    # We could get the response body, that should be some rack wrapper it.
-    # assume it is ActionController::Response object
-    # result = response.body
+    if status.nil?
+      RestrictController.call(env)
+    else
+      # We could get the response body, that should be some rack wrapper it.
+      # assume it is ActionController::Response object
+      # result = response.body
 
-    [status, headers, Body.new(headers, response, @message, start_time, end_time)]
+      # [status, headers, response]
+      [status, headers, Body.new(headers, response, @message, start_time, end_time)]
+    end
+
   end
 
   # That does make things easier to test and elegantly handles the thread-safety issue
