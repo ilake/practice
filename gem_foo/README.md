@@ -1,6 +1,6 @@
 # GemFoo
 
-TODO: Write a gem description
+Provde a uuid to every model when it was created in the same request.
 
 ## Installation
 
@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+That is it when you install this gem, when you create any activerecord, it would try to assign the randmon key to uuid coulumn if you have this column.
 
 ## Contributing
 
