@@ -33,6 +33,7 @@ rack utils
     (rdb:1) request.env["action_dispatch.request_id"]
     => "cf486c62-3544-4d91-95d9-763acae5a7fe"
     ```
+    
 - use Rails::Rack::Logger
 - use ActionDispatch::ShowExceptions
   - [https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/middleware/show_exceptions.rb](https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/middleware/show_exceptions.rb)
