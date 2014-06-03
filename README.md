@@ -66,13 +66,17 @@ rack utils
 - [http://railscasts.com/episodes/301-extracting-a-ruby-gem?view=asciicast](http://railscasts.com/episodes/301-extracting-a-ruby-gem?view=asciicast)
 
 ## Thread
+- [What do multi-processes VS multi-threaded servers most benefit from?](http://stackoverflow.com/questions/18575235/what-do-multi-processes-vs-multi-threaded-servers-most-benefit-from)
 - [http://www.ruby-doc.org/core-2.1.1/Thread.html](http://www.ruby-doc.org/core-2.1.1/Thread.html)
+- [並發(Concurrency)和並行(Parallelism)的區別](http://www.vaikan.com/defining-concurrency-and-parallelism/)
+- [Concurrency is not Parallelism](http://concur.rspace.googlecode.com/hg/talk/concur.html#landing-slide)
+- [Concurrency and Database Connections in Ruby with ActiveRecord](https://devcenter.heroku.com/articles/concurrency-and-database-connections)
 - Thread safe
-  - http://railscasts.com/episodes/365-thread-safety
-  - http://lucaguidi.com/2014/03/27/thread-safety-with-ruby.html
-  - http://m.onkey.org/thread-safety-for-your-rails
+  - [http://railscasts.com/episodes/365-thread-safety](http://railscasts.com/episodes/365-thread-safety)
+  - [http://lucaguidi.com/2014/03/27/thread-safety-with-ruby.html](http://lucaguidi.com/2014/03/27/thread-safety-with-ruby.html)
+  - [http://m.onkey.org/thread-safety-for-your-rails](http://m.onkey.org/thread-safety-for-your-rails)
   - What is mean? does the variable share with multiple threads, Is it still safe ?
   - If we design write operations in a way that while they’re running, other threads can’t read nor alter the state we’re modifying, that change is thread safe.
-  - You should care about the use for $vars, @@vars, class instance variables
+  - You should care about the use for $vars, @@vars, instance variables at class level and constants.
 
 
