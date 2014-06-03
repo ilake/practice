@@ -3,6 +3,6 @@ class PostsController < ApplicationController
   def create
     Post.create(:title => params[:title], :content => params[:content])
     Post.create(:title => params[:title], :content => params[:content])
-    redirect_to root_url
+    render :text => Post.order("id DESC").limit(2).pluck(:uuid)
   end
 end
