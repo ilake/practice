@@ -65,12 +65,13 @@ rack utils
 - [http://pothibo.com/2013/11/ruby-on-rails-inside-actiondispatch-and-rack/](http://pothibo.com/2013/11/ruby-on-rails-inside-actiondispatch-and-rack/)
 - [http://railscasts.com/episodes/301-extracting-a-ruby-gem?view=asciicast](http://railscasts.com/episodes/301-extracting-a-ruby-gem?view=asciicast)
 
-## Thread
+## Concurrency
 - [What do multi-processes VS multi-threaded servers most benefit from?](http://stackoverflow.com/questions/18575235/what-do-multi-processes-vs-multi-threaded-servers-most-benefit-from)
 - [http://www.ruby-doc.org/core-2.1.1/Thread.html](http://www.ruby-doc.org/core-2.1.1/Thread.html)
 - [並發(Concurrency)和並行(Parallelism)的區別](http://www.vaikan.com/defining-concurrency-and-parallelism/)
 - [Concurrency is not Parallelism](http://concur.rspace.googlecode.com/hg/talk/concur.html#landing-slide)
 - [Concurrency and Database Connections in Ruby with ActiveRecord](https://devcenter.heroku.com/articles/concurrency-and-database-connections)
+- http://railscasts.com/episodes/367-celluloid
 - Thread safe
   - [http://railscasts.com/episodes/365-thread-safety](http://railscasts.com/episodes/365-thread-safety)
   - [http://lucaguidi.com/2014/03/27/thread-safety-with-ruby.html](http://lucaguidi.com/2014/03/27/thread-safety-with-ruby.html)
