@@ -10,7 +10,9 @@ require "xmlrpc/client"
 # difference = result["difference"]
 # 
 # puts "Sum: #{sum}, Difference: #{difference}"
-client = XMLRPC::Client.new( "localhost", "/", 1234 )
+client = XMLRPC::Client.new( "localhost", "/", 16384)
 s = client.call2('my_test.test','asd')
 # s = client.call('my_test.test','asd')
-p s
+# p s
+
+client.call2('command.shutdown')

@@ -9,8 +9,18 @@ require "xmlrpc/server"
 # 
 # s.serve
 
-server = XMLRPC::Server.new( 1234 )
+server = XMLRPC::Server.new( 16384 )
 server.add_handler('my_test.test') do |msg|
   "responce for #{msg}"
 end
+
+server.add_handler('command.shutdown') do
+  server.shutdown
+end
+
+at_exit do
+  puts "good bye"
+end
+
+puts "======================"
 server.serve
