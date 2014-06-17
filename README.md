@@ -82,7 +82,9 @@ rack utils
 
 ## Thread
 - http://phrogz.net/programmingruby/ref_c_thread.html
+- http://phrogz.net/programmingruby/tut_threads.html
 - http://www.linuxprogrammingblog.com/threads-and-fork-think-twice-before-using-them
+- http://www.geekride.com/fork-forking-vs-threading-thread-linux-kernel/
 - A thread shares all global, instance, and local variables that are in existence at the time the thread starts, local variables created within a thread's block are truly local to that thread—each thread will have its own copy of these variables.
 - When a Ruby program terminates, all running threads are killed, regardless of their states
 -  set abort_on_exception to true, and an unhandled exception kills all running threads.
