@@ -90,3 +90,6 @@ rack utils
 - When a Ruby program terminates, all running threads are killed, regardless of their states
 -  set abort_on_exception to true, and an unhandled exception kills all running threads.
 
+##message queue
+- http://davidmarquis.wordpress.com/2013/01/03/reliable-delivery-message-queues-with-redis/
+- http://www.minvolai.com/blog/2013/10/rabbitmq-vs-redis-message-broker/
