@@ -5,7 +5,7 @@ What it mean the thread in your current process would not available in your chil
 
 Let's see
 
-```
+```ruby
 thread = Thread.new { }
 thread2 = Thread.new { }
 
@@ -24,7 +24,7 @@ puts "in main process #{Thread.list.count}"
 So what is the problem? That mean when you use fork in a multithread program, the child process could not access the thread resource.
 For example: Bunny is a multithread program client for Rabbitmq, we try to publish a message in main process and subscribe it in the child process through fork, then something bad happen, we still have the same queue instance, but the connection is fail. Because the network I/O thread is not inherited, the connection could not be used in child process cause this fail.
 
-```
+```ruby
 require "bunny"
 
 conn = Bunny.new
