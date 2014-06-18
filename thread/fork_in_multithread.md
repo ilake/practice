@@ -21,7 +21,7 @@ puts "in main process #{Thread.list.count}"
 # in child process 1
 ```
 
-So what is the problem? That mean when you use fork in a multithread program, the child process could not access the thread.
+So what is the problem? That mean when you use fork in a multithread program, the child process could not access the thread resource.
 For example: Bunny is a multithread program client for Rabbitmq, so when you try to use fork in the program, that is what happen...
 
 ```
