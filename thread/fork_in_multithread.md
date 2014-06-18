@@ -53,6 +53,7 @@ conn.stop
 
 references:
 
-- [http://www.ruby-doc.org/core-2.1.2/Process.html#method-c-fork](http://www.ruby-doc.org/core-2.1.2/Process.html#method-c-fork)
-- [ http://www.linuxprogrammingblog.com/threads-and-fork-think-twice-before-using-them ](http://www.linuxprogrammingblog.com/threads-and-fork-think-twice-before-using-them)
+- [fork doc](http://www.ruby-doc.org/core-2.1.2/Process.html#method-c-fork)
+- [ threads-and-fork-think-twice-before-using-them ](http://www.linuxprogrammingblog.com/threads-and-fork-think-twice-before-using-them)
+- [Bunny consumer_work_pool.rb](https://github.com/ruby-amqp/bunny/blob/master/lib/bunny/consumer_work_pool.rb#L33)
 
