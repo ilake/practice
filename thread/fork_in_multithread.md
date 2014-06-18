@@ -22,7 +22,7 @@ puts "in main process #{Thread.list.count}"
 ```
 
 So what is the problem? That mean when you use fork in a multithread program, the child process could not access the thread resource.
-For example: Bunny is a multithread program client for Rabbitmq, so when you try to use fork in the program, that is what happen...
+For example: Bunny is a multithread program client for Rabbitmq, so when you try to use fork in the program, we try to publish a message in main process and subscribe it in the child process, then something bad happen, we still have the same queue instance, but the connection is fail. Because the network I/O thread is not inherited, the connection could not be used in child process cause this fail.
 
 ```
 require "bunny"
@@ -35,11 +35,14 @@ q  = ch.queue("test1")
 # publish a message to the default exchange which then gets routed to this queue
 q.publish("Hello, everybody!")
 
+puts "Main process queue object_id #{q.object_id}"
+
 # fetch a message from the queue
 # It would fail because bunny is multithread, and fork would not copy the thread.
 # The output is 
 # ...continuation_queue.rb:25:in `pop': execution expired (Timeout::Error)
 fork {
+ puts "Child process queue object_id #{q.object_id}"
  delivery_info, metadata, payload = q.pop
  puts "This is the message: #{payload}"
  sleep (2)
@@ -47,7 +50,6 @@ fork {
 
 conn.stop
 ```
-Because the network I/O thread is not inherited, the connection could not be used in child process cause this fail.
 
 references:
 
