@@ -1,0 +1,56 @@
+## Fork
+
+The thread calling fork is the only thread in the created child process. fork doesn’t copy other threads.
+What it mean the thread in your current process would not available in your child process.
+
+Let's see
+
+```
+thread = Thread.new { }
+thread2 = Thread.new { }
+
+fork {
+  puts "in child process #{Thread.list.count}"
+}
+
+puts "in main process #{Thread.list.count}"
+
+# The output will be
+#
+# in main process 3
+# in child process 1
+```
+
+So what is the problem? That mean it will casue problem when you use fork in a multithread program, for example
+Bunny is a multithread program client for Rabbitmq, so when you try to use fork in the program, that is what happen...
+
+```
+require "bunny"
+
+conn = Bunny.new
+conn.start
+ch = conn.create_channel
+q  = ch.queue("test1")
+
+# publish a message to the default exchange which then gets routed to this queue
+q.publish("Hello, everybody!")
+
+# fetch a message from the queue
+# It would fail because bunny is multithread, and fork would not copy the thread.
+# The output is 
+# ...continuation_queue.rb:25:in `pop': execution expired (Timeout::Error)
+fork {
+ delivery_info, metadata, payload = q.pop
+ puts "This is the message: #{payload}"
+ sleep (2)
+}
+
+conn.stop
+```
+Because the network I/O thread is not inherited, the connection could not be used in child process cause this fail.
+
+references:
+
+- [http://www.ruby-doc.org/core-2.1.2/Process.html#method-c-fork](http://www.ruby-doc.org/core-2.1.2/Process.html#method-c-fork)
+- [ http://www.linuxprogrammingblog.com/threads-and-fork-think-twice-before-using-them ](http://www.linuxprogrammingblog.com/threads-and-fork-think-twice-before-using-them)
+
