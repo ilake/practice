@@ -13,18 +13,20 @@ q  = ch.queue("test1")
 # publish a message to the default exchange which then gets routed to this queue
 q.publish("Hello, everybody!")
 
+puts "Main process queue object_id #{q.object_id}"
 # fetch a message from the queue
 # It would fail because bunny is multithread, and fork would not copy the thread.
-# fork {
-#   delivery_info, metadata, payload = q.pop
-#   puts "This is the message: #{payload}"
-#   sleep (2)
-# }
-Thread.new {
+fork {
+  puts "Child process queue object_id #{q.object_id}"
   delivery_info, metadata, payload = q.pop
   puts "This is the message: #{payload}"
   sleep (2)
 }
+# Thread.new {
+#   delivery_info, metadata, payload = q.pop
+#   puts "This is the message: #{payload}"
+#   sleep (2)
+# }
 
 puts Process.pid
 puts Thread.list.size
