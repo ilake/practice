@@ -1,5 +1,5 @@
-When you use vim, if you select some text and replace others, it is annoying the paste was overwrite by the removed text.
-This script is helpful to avoid this ( put it in ~/.vimrc )
+When you use vim, if you select some text and replace others, it is annoying the paste buffer was overwrite by the removed text. you could not paste again and again.
+This script is helpful to avoid this situation( put it in ~/.vimrc )
 
 ```
 function! RestoreRegister()
