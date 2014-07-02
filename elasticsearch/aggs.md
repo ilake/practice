@@ -1,17 +1,19 @@
 ### Analytics in elasticsearch
-You are wrong if your think elasticsearch could only use in your search feature, it also pretty useful in analytics.
-It could help you for some analytic aggregation, like min, avg or percentiles etc...
+You are wrong if your think elasticsearch could only use in your search feature. It also pretty good in analytics.
+It could help you for some ggregation, like min, avg or percentiles etc...
 
 For example, We have a students grades and we hope to do some analytics for specific subject in a school.
+Below is how we did it.
 
 ```ruby
+  # establish a elasticsearch client
   Client = Elasticsearch::Client.new host: 'localhost:9200'
 
   response = Client.search :index => student_grades,
                        :body => {
                          :query => {
                             "query_string" => {
-                               # find the grades school_id is 9527 and subject_group is mathematics
+                               # find the grades in school 9527 and subject_group is mathematics
                                "query" => %| school_id:9527 AND subject_group:'mathematics' |
                             }
                          },
@@ -26,8 +28,9 @@ For example, We have a students grades and we hope to do some analytics for spec
    Hashie::Mash.new response
 ```
 
-What we get, we get the grade distribution, percentiles for 25%, 50% and 75% and avg, max sum etc...
-And it is crazy fast. Elasticsearch support more options for analytcis. If you want to build anything related analytcis you should give it a try.
+And then this is what we get, grade terms, percentiles for 25%, 50% and 75% and avg, max sum etc...
+And what make it more awesome, it is crazy, crazy fast.
+It support more options for aggregation. If you want to build anything related analytcis you should give it a try.
 
 ```ruby
  ...
