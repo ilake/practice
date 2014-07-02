@@ -46,7 +46,7 @@ And it is crazy fast. Elasticsearch support more options for analytcis. If you w
 ```
 
 
-Note: My elasticsearch version is 1.1.1, 1.0.X don't support Aggregation feature.
+Note: My elasticsearch version is 1.1.1, 1.0.X don't support Aggregation feature. Facets will be deprecated in the future.
 ### Reference
 [ Elasticserch aggregation ](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations.html)
 [ Elasticsearch ruby ](https://github.com/elasticsearch/elasticsearch-ruby)
