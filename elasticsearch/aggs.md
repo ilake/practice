@@ -22,7 +22,7 @@ For example, We have a students grades and we hope to do some analytics for spec
                          }
                        }
 
-   # That will be easy for us access
+   # That will be easy for access
    Hashie::Mash.new response
 ```
 
