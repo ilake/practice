@@ -51,5 +51,5 @@ It support more options for aggregation. If you want to build anything related a
 
 Note: My elasticsearch version is 1.1.1, 1.0.X don't support Aggregation feature. Facets will be deprecated in the future.
 ### Reference
-[ Elasticserch aggregation ](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations.html)
-[ Elasticsearch ruby ](https://github.com/elasticsearch/elasticsearch-ruby)
+- [ Elasticserch aggregation ](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations.html)
+- [ Elasticsearch ruby ](https://github.com/elasticsearch/elasticsearch-ruby)
