@@ -2,8 +2,7 @@
 You are wrong if your think elasticsearch could only use in your search feature, it also pretty useful in analytics.
 It could help you for some analytic aggregation, like min, avg or percentiles etc...
 
-For example, We have a students grades and we hope to do some analytics for specific subject in a school
-Here we use [ elasticsearch-ruby ](https://github.com/elasticsearch/elasticsearch-ruby) gem for our client
+For example, We have a students grades and we hope to do some analytics for specific subject in a school.
 
 ```ruby
   Client = Elasticsearch::Client.new host: 'localhost:9200'
