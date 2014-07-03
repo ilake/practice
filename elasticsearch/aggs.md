@@ -53,3 +53,4 @@ Note: My elasticsearch version is 1.1.1, 1.0.X don't support Aggregation feature
 ### Reference
 - [ Elasticserch aggregation ](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations.html)
 - [ Elasticsearch ruby ](https://github.com/elasticsearch/elasticsearch-ruby)
+- [Querying ElasticSearch - A Tutorial and Guide](http://okfnlabs.org/blog/2013/07/01/elasticsearch-query-tutorial.html#basic-queries-using-only-the-query-string)
