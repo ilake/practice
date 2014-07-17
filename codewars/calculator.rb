@@ -34,6 +34,7 @@ require 'ruby-debug'
 
 class Calculator
   def evaluate(string)
+    # should follow this order
     [' + ', ' - ', ' * ', ' / '].each do |op|
       if string.include?(op)
         debugger
