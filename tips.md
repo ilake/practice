@@ -1,3 +1,24 @@
+### Rename your current file in vim.
+
+We often need to change the filename when we are programming, it is a easy way to let you rename your current file in vim.
+
+```vim
+
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+
+map <leader>n :call RenameFile()<cr>
+```
+
+---
+
 ### gsub and sub are not unavailable in sub-class of String
 When you use gusb in block form from sub-class of String, variables such as $1, $2, $`, $&, and $’ will not be set appropriately.
 
@@ -26,6 +47,7 @@ Ya, the SafeBuffers is one of the example. The issue we meet is we try to genera
     av = ActionView::Base.new(ActionController::Base.view_paths)
     av.render(:template => "index.pdf.erb")
   end
+
 
   def parsing
     render_view.gsub!( /src=["']+([^:]+?)["']/i ) do |m|
