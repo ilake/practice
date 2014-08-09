@@ -1,5 +1,8 @@
 RailsFoo::Application.routes.draw do
-  root 'home#index'
   get '/restrict', :to => 'home#restrict'
+  resources :messages do
+    collection { get :events }
+  end
   resources :posts
+  root 'home#index'
 end

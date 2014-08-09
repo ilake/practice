@@ -26,3 +26,16 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+== SSE Feature
+You need to enable the cache_classes and eager_load to make it thread safe.
+  config.cache_classes = true
+  config.eager_load = true
+
+  ```ruby
+    # You could test this in console to create message
+    redis.publish('messages.channel.1.create', {:name => 't', :content => 'bbbbb'}.to_json)
+
+    # destroy message by
+    redis.publish('messages.channel.1.destroy', {:name => 't', :content => 'bbbbb'}.to_json)
+  ```
