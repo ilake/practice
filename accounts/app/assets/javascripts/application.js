@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require accounting
 //= require turbolinks
 //= require react
 //= require react_ujs
