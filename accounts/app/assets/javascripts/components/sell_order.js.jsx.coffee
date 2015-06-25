@@ -2,13 +2,11 @@
 #= require react-slider
 
 @SellOrder = React.createClass
+  mixins: [@Common]
   getInitialState: ->
     amount: @props.data.amount
     rate: @props.data.rate
   handleChange: (e)->
-    # name = e.target.name
-    # @setState("#{name}": e.target.value)
-    # alert("#{e.target.name} = #{e.target.value}")
     name = e.target.name
     newState = {}
     newState[e.target.name] = e.target.value
@@ -37,6 +35,9 @@
     `<div>
       <button type="button" className="btn btn-primary" onClick={this.testRefFeature}>
         Test Ref Feature
+      </button>
+      <button type="button" className="btn btn-primary" onClick={this.shared}>
+        Test Mix Feature
       </button>
       <form className="form-inline" onSubmit={this.handleSubmit}>
         <div className="form-group">

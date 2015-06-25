@@ -1,6 +1,6 @@
 @SellOrderPreview = React.createClass
   test: ->
-    "test"
+    "This is from ref Component"
   render: ->
     `<div className="order-preview">
        <div>Cost:  {currencyFormat(this.props.cost)}</div>
