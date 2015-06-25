@@ -32,6 +32,14 @@
   valid: ->
     (100000 <= NumberFormat(@state.amount) <= 1000000) && (2500 <= NumberFormat(@state.rate) <= 4000)
   render: ->
+    insideElement = if true
+                      `<div>
+                        <b>Hello Inside</b>
+                      </div>`
+
+    list = ["foo", "bar"].map (data, i) ->
+      `<List value={data} key={i} />`
+
     `<div>
       <button type="button" className="btn btn-primary" onClick={this.testRefFeature}>
         Test Ref Feature
@@ -39,6 +47,10 @@
       <button type="button" className="btn btn-primary" onClick={this.shared}>
         Test Mix Feature
       </button>
+      {insideElement}
+      <ul>
+        {list}
+      </ul>
       <form className="form-inline" onSubmit={this.handleSubmit}>
         <div className="form-group">
           <input type="text" className="form-control" placeholder="100,000 min" name="amount"
@@ -48,9 +60,19 @@
           <input type="text" className="form-control" placeholder="Rate" name="rate" readOnly
                  value={localeFormat(NumberFormat(this.state.rate))} onChange={this.handleChange}/>
         </div>
+        <ReactSlider value={this.state.rate}
+                     onChange={this.sliderChange}
+                     min={2000}
+                     max={4000}
+                     step={50}
+                     withBars />
 
-        <ReactSlider value={this.state.rate} onChange={this.sliderChange} min={2000} max={4000} step={50} withBars />
-        <SellOrderPreview cost={this.calculateCost()} fee={this.calculateFee()} get={this.calculateGet()} ref="preview" />
+        <SellOrderPreview
+                  cost={this.calculateCost()}
+                  fee={this.calculateFee()}
+                  get={this.calculateGet()}
+                  ref="preview" />
+
         <button type="submit" className="btn btn-primary" disabled={!this.valid()}>
           Create Order
         </button>
