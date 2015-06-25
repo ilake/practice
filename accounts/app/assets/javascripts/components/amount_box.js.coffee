@@ -9,4 +9,4 @@
           @props.text
         React.DOM.div
           className: 'panel-body'
-          amountFormat(@props.amount)
+          localeFormat(@props.amount)
