@@ -1,4 +1,10 @@
 @Records = React.createClass
+  propTypes:
+    data: React.PropTypes.array
+    data: React.PropTypes.shape({
+      id: React.PropTypes.number,
+      title: React.PropTypes.string.isRequired
+    })
   getInitialState: ->
     records: @props.data
   getDefaultProps: ->
