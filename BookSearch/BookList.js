@@ -11,7 +11,9 @@ var {
     Text,
     StyleSheet,
     View,
-    Component
+    Component,
+    ListView,
+    TouchableHighlight,
    } = React;
 
 var styles = StyleSheet.create({
@@ -37,22 +39,63 @@ var styles = StyleSheet.create({
     },
     author: {
         color: '#656565'
+    },
+    separator: {
+        height: 1,
+        backgroundColor: '#dddddd'
     }
 });
 
 class BookList extends Component {
-    render() {
-        var book = FAKE_BOOK_DATA[0];
+    constructor(props) {
+    // The DataSource is an interface that ListView uses to determine which rows have changed over the course of updates to the UI. We provide a function that compares the identity of a pair of rows and this is used to determine the changes in a list of data.
+         super(props);
+         this.state = {
+             dataSource: new ListView.DataSource({
+                 rowHasChanged: (row1, row2) => row1 !== row2
+             })
+         };
+    }
+    
+    componentDidMount() {
+      // componentDidMount() is called when the component is loaded/mounted onto the UI view. When the function is called, we set the datasource property with data from our data object.
+        var books = FAKE_BOOK_DATA;
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(books)
+        });
+    }
 
-                // <Image source={{uri: book.volumeInfo.imageLinks.thumbnail}}
-                //        style={styles.thumbnail} />
-        return (
-            <View style={styles.container}>
-                <View style={styles.rightContainer}>
-                    <Text style={styles.title}>{book.volumeInfo.title}</Text>
-                    <Text style={styles.author}>{book.volumeInfo.authors}</Text>
+    renderBook(book) {
+      //  TouchableHighlight component. This is a wrapper for making views respond properly to touches. On press down, the opacity of the wrapped view is decreased, which allows the underlay color to show through, darkening or tinting the view. With this, if you press down on a ListView row, you will see the highlight color
+       return (
+            <TouchableHighlight>
+                <View>
+                    <View style={styles.container}>
+                        <View style={styles.rightContainer}>
+                            <Text style={styles.title}>{book.volumeInfo.title}</Text>
+                            <Text style={styles.author}>{book.volumeInfo.authors}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.separator} />
                 </View>
-	          </View>
+            </TouchableHighlight>
+       );
+    }
+
+    render() {
+            // <View style={styles.container}>
+            //     <Image source={{uri: book.volumeInfo.imageLinks.thumbnail}}
+            //            style={styles.thumbnail} />
+            //     <View style={styles.rightContainer}>
+            //         <Text style={styles.title}>{book.volumeInfo.title}</Text>
+            //         <Text style={styles.author}>{book.volumeInfo.authors}</Text>
+            //     </View>
+	          // </View>
+        return (
+          <ListView
+              dataSource={this.state.dataSource}
+              renderRow={this.renderBook.bind(this)}
+              style={styles.listView} />
         );
     }
 }
