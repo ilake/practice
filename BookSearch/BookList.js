@@ -2,9 +2,10 @@
 
 var React = require('react-native');
 
-var FAKE_BOOK_DATA = [
-    {volumeInfo: {title: 'The Catcher in the Rye', authors: "J. D. Salinger", imageLinks: {thumbnail: 'http://books.google.com/books/content?id=PCDengEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'}}}
-];
+// var FAKE_BOOK_DATA = [
+//     {volumeInfo: {title: 'The Catcher in the Rye', authors: "J. D. Salinger", imageLinks: {thumbnail: 'http://books.google.com/books/content?id=PCDengEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'}}}
+// ];
+var REQUEST_URL = 'https://www.googleapis.com/books/v1/volumes?q=subject:fiction';
 
 var {
     Image,
@@ -14,6 +15,7 @@ var {
     Component,
     ListView,
     TouchableHighlight,
+    ActivityIndicatorIOS
    } = React;
 
 var styles = StyleSheet.create({
@@ -43,7 +45,15 @@ var styles = StyleSheet.create({
     separator: {
         height: 1,
         backgroundColor: '#dddddd'
-    }
+    },
+    listView: {
+      backgroundColor: '#F5FCFF'
+    },
+    loading: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center'
+   }
 });
 
 class BookList extends Component {
@@ -51,18 +61,32 @@ class BookList extends Component {
     // The DataSource is an interface that ListView uses to determine which rows have changed over the course of updates to the UI. We provide a function that compares the identity of a pair of rows and this is used to determine the changes in a list of data.
          super(props);
          this.state = {
-             dataSource: new ListView.DataSource({
-                 rowHasChanged: (row1, row2) => row1 !== row2
-             })
+              isLoading: true,
+              dataSource: new ListView.DataSource({
+                  rowHasChanged: (row1, row2) => row1 !== row2
+              })
          };
     }
-    
+
     componentDidMount() {
+      this.fetchData();
       // componentDidMount() is called when the component is loaded/mounted onto the UI view. When the function is called, we set the datasource property with data from our data object.
-        var books = FAKE_BOOK_DATA;
+        // var books = FAKE_BOOK_DATA;
+        // this.setState({
+        //     dataSource: this.state.dataSource.cloneWithRows(books)
+        // });
+    }
+
+    fetchData() {
+      fetch(REQUEST_URL)
+      .then((response) => response.json())
+      .then((responseData) => {
         this.setState({
-            dataSource: this.state.dataSource.cloneWithRows(books)
+          dataSource: this.state.dataSource.cloneWithRows(responseData.items),
+          isLoading: false
         });
+      })
+      .done();
     }
 
     renderBook(book) {
@@ -71,6 +95,8 @@ class BookList extends Component {
             <TouchableHighlight>
                 <View>
                     <View style={styles.container}>
+                        <Image source={{uri: book.volumeInfo.imageLinks.thumbnail}}
+                               style={styles.thumbnail} />
                         <View style={styles.rightContainer}>
                             <Text style={styles.title}>{book.volumeInfo.title}</Text>
                             <Text style={styles.author}>{book.volumeInfo.authors}</Text>
@@ -82,6 +108,18 @@ class BookList extends Component {
        );
     }
 
+    renderLoadingView() {
+        return (
+            <View style={styles.loading}>
+                <ActivityIndicatorIOS
+                    size='large'/>
+                <Text>
+                    Loading books...
+                </Text>
+            </View>
+        );
+    }
+
     render() {
             // <View style={styles.container}>
             //     <Image source={{uri: book.volumeInfo.imageLinks.thumbnail}}
@@ -91,6 +129,10 @@ class BookList extends Component {
             //         <Text style={styles.author}>{book.volumeInfo.authors}</Text>
             //     </View>
 	          // </View>
+        if (this.state.isLoading) {
+            return this.renderLoadingView();
+        }
+
         return (
           <ListView
               dataSource={this.state.dataSource}
