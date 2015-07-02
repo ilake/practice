@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react-native');
+var BookDetail = require('./BookDetail');
 
 // var FAKE_BOOK_DATA = [
 //     {volumeInfo: {title: 'The Catcher in the Rye', authors: "J. D. Salinger", imageLinks: {thumbnail: 'http://books.google.com/books/content?id=PCDengEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'}}}
@@ -89,10 +90,18 @@ class BookList extends Component {
       .done();
     }
 
+    showBookDetail(book) {
+         this.props.navigator.push({
+             title: book.volumeInfo.title,
+             component: BookDetail,
+             passProps: {book}
+         });
+     }
+
     renderBook(book) {
       //  TouchableHighlight component. This is a wrapper for making views respond properly to touches. On press down, the opacity of the wrapped view is decreased, which allows the underlay color to show through, darkening or tinting the view. With this, if you press down on a ListView row, you will see the highlight color
        return (
-            <TouchableHighlight>
+            <TouchableHighlight onPress={() => this.showBookDetail(book)} underlayColor="#dddddd">
                 <View>
                     <View style={styles.container}>
                         <Image source={{uri: book.volumeInfo.imageLinks.thumbnail}}
