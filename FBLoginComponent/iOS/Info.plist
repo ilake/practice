@@ -36,7 +36,20 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>FacebookAppID</key>
+	<string>809983049064307</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>FacebookDisplayName</key>
+	<string>aruru-dev</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb809983049064307</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
