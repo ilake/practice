@@ -93,3 +93,16 @@ rack utils
 ##message queue
 - http://davidmarquis.wordpress.com/2013/01/03/reliable-delivery-message-queues-with-redis/
 - http://www.minvolai.com/blog/2013/10/rabbitmq-vs-redis-message-broker/
+
+
+# React-Native
+## Add native module to prj
+Use https://colinramsay.co.uk/2015/03/27/react-native-simple-native-module.html as example
+but there is one thing need reminding
+The new file you create  .h, .m  need to have refernce for prj
+That means
+you need to see SomeString.m, SomeString.m under TestNativeModule folder in xcode
+
+What you have to do is *add File From Xcode* in the beginning
+or add them later in xcode ( left click in TestNativeModule folder, then click *Add Files to TestNatvieModule* )
+
